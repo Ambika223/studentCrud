@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <h2 class="text-center bg-info p-4">Todo Task With CheckBox</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+
+                <div class="card-body">
+                    <h3 class="text-center" style="font-weight:bold; font-size:20px">
+                        {{isOnEditMode?"UpdateTodo":"AddTodo"}}
+                    </h3>
+                    <div class="form-group">
+                        <label>Todo Title</label>
+                        <input type="text" class="form-control" #todoItem placeholder="Enter todoTitle">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Complication Status</label>
+                        <select name="" id="" class="form-control" #isCompleted>
+                            <option value="">Status</option>
+                            <option value="Completed">Completed</option>
+                            <option value="NotCompleted">Not Completed</option>
+                        </select>
+                    </div>
+
+
+                    <button mat-raised-button color="accent" *ngIf="!isOnEditMode" class="btn-block"
+                        (click)="ontodoAdd()">Add Todo</button>
+                    <button mat-raised-button color="accent" *ngIf="isOnEditMode" class="btn-block"
+                        (click)="onUpdateTodo()">Update Todo</button>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group" *ngIf="todos.length>0;else noTodoItems">
+                        <li class="list-group-item d-flex justify-content-between" *ngFor="let todo of todos">
+                            <div>
+                                <input type="checkbox" [checked]="todo.completed" (change)="onUpdateCheckbox(todo)">
+                                <span class="ml-2" [ngClass]="todo.completed?'text-success':'text-danger'">
+                                    {{todo.title}}</span>
+                            </div>
+
+                            <div>
+                                <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon"
+                                    (click)="onTodoEdit(todo)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon"
+                                    class="ml-3" (click)="onRemoveTodo(todo)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ng-template #noTodoItems>
+                        <p class="alert alert-secondary">No TodoItem Found</p>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
