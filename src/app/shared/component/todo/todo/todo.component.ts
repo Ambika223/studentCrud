@@ -19,7 +19,7 @@ export class TodoComponent implements OnInit {
     private _SnackBar: SnackBarService
   ) { }
   isOnEditMode: boolean = false;
-  private update_id!: string;
+  update_id: string = '';
   todos: ITodo[] = [
     { id: "1", title: 'Learn Angular fundamentals', completed: true },
     { id: "2", title: 'Build a simple todo app', completed: false },
@@ -36,7 +36,7 @@ export class TodoComponent implements OnInit {
       title: this.todoItemRef.nativeElement.value,
       completed: this.isCompleted.nativeElement.value === 'Completed'
     }
-    console.log(todoobj)
+    // console.log(todoobj)
     this.todos.unshift(todoobj)
     this.todoItemRef.nativeElement.value = '';
     this.isCompleted.nativeElement.value = '';
@@ -76,6 +76,7 @@ export class TodoComponent implements OnInit {
       this.isCompleted.nativeElement.value = '';
 
       this._SnackBar.openSnackBar(`Todo with ${this.update_id} is Updated Successfully`);
+      this.update_id = '';
     }
   }
 

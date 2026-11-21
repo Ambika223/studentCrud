@@ -154,12 +154,14 @@ export class Student1Component implements OnInit {
     this.course.nativeElement.value = '';
     this.city.nativeElement.value = '';
     this.isActive.nativeElement.value = '';
+    this.isOnEditMode = false;
+    this.edit_ID = '';
   }
 
 
   //checkbox
   onchange(std: Istudent) {
-    std.isActive = !this.isActive;
+    std.isActive = !std.isActive;
     this._snackBar.openSnackBar(`CheckBox is updated successfully`);
 
   }

@@ -70,8 +70,8 @@
                                     <td>{{std.age}}</td>
                                     <td>{{std.course}}</td>
                                     <td>{{std.city}}</td>
-                                    <td> <input type="checkbox" [checked]="std.isActive"><span class="badge ml-4"
-                                            (click)="onchange(std)" [ngClass]="{
+                                    <td> <input type="checkbox" [checked]="std.isActive" (change)="onchange(std)"><span
+                                            class="badge ml-4" [ngClass]="{
                             'badge-success': std.isActive,
                             'badge-danger':!std.isActive
                             }">{{std.isActive?'Active':'InActive'}}</span>
@@ -80,7 +80,8 @@
                                     <td><button class="btn btn-sm btn-outline-primary btn-block"
                                             (click)="onEditStd(std)">Edit</button></td>
                                     <td><button class="btn btn-sm btn-outline-danger btn-block"
-                                            (click)="onRemoveStd(std)">Delete</button></td>
+                                            (click)="onRemoveStd(std)"
+                                            [disabled]="isOnEditMode && edit_ID===std.id">Delete</button></td>
                                 </tr>
                             </tbody>
                         </table>

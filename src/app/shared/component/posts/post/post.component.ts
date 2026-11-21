@@ -80,6 +80,7 @@ export class PostComponent implements OnInit {
     this.todoDescription.nativeElement.value = post.description;
     this.editId = post.id;
     this.isOnEditMode = true;
+    post.isEditing = true;
   }
 
 
@@ -91,11 +92,13 @@ export class PostComponent implements OnInit {
         ...this.postArr[updateindex],
         title: this.todoTitle.nativeElement.value,
         image: this.todoImage.nativeElement.value,
-        description: this.todoDescription.nativeElement.value
+        description: this.todoDescription.nativeElement.value,
+        isEditing: false
       };
     }
 
     this.isOnEditMode = false;
+    this.editId = '';
     this.resetForm();
   }
 
