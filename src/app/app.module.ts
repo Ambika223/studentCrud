@@ -11,13 +11,15 @@ import { Student1Component } from './shared/component/student1/student1.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoComponent } from './shared/component/todo/todo/todo.component';
 import { PostComponent } from './shared/component/posts/post/post.component';
+import { ProductComponent } from './shared/component/product/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Student1Component,
     TodoComponent,
-    PostComponent
+    PostComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

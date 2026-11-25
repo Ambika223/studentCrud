@@ -1,0 +1,265 @@
+<div class="container-fluid mt-5 bg-info">
+    <h2 class="text-center bg-info p-3">Product Task</h2>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mb-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3>{{isOnEditMode ? 'Update Product' : 'Add Product'}}</h3>
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" class="form-control" #productName>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" class="form-control" #brand>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" #category>
+                            <option value="">Select Category</option>
+                            <option>Mobile</option>
+                            <option>Laptop</option>
+                            <option>Electronics</option>
+                            <option>Fashion</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" class="form-control" placeholder="Enter price" #price>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Discount</label>
+                        <input type="number" class="form-control" placeholder="Enter discount" #discount>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <input type="number" class="form-control" placeholder="Enter rating" #rating>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Color</label>
+                        <input type="text" class="form-control" placeholder="Enter color" #color>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Size</label>
+                        <input type="text" class="form-control" placeholder="Enter size" #size>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stock</label>
+                        <input type="number" class="form-control" placeholder="Enter stock" #stock>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Warranty</label>
+                        <input type="text" class="form-control" placeholder="Enter warranty" #warranty>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" class="form-control" placeholder="Enter image URL" #imageUrl>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter description" #description></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is Available</label>
+                        <select class="form-control" #isAvailable>
+                            <option value="">Select Availability</option>
+                            <option value="Available">Yes</option>
+                            <option value="Out of Stock">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is Featured</label>
+                        <select class="form-control" #isFeatured>
+                            <option value="">Select Featured</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-success btn-block" *ngIf="!isOnEditMode" (click)="onAddProduct()">Add
+                        Product</button>
+                    <button class="btn btn-info btn-block" *ngIf="isOnEditMode" (click)="onUpdateProduct()">Update
+                        Product</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="productArr.length>0;else noProduct">
+        <div class="container-fluid mt-5 bg-info">
+            <h2 class="text-center bg-info p-3">Product Task</h2>
+            <div class="row">
+                <div class="col-md-6 offset-md-3 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h3>{{isOnEditMode ? 'Update Product' : 'Add Product'}}</h3>
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                <input type="text" class="form-control" #productName>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Brand</label>
+                                <input type="text" class="form-control" #brand>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" #category>
+                                    <option value="">Select Category</option>
+                                    <option>Mobile</option>
+                                    <option>Laptop</option>
+                                    <option>Electronics</option>
+                                    <option>Fashion</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="number" class="form-control" placeholder="Enter price" #price>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Discount</label>
+                                <input type="number" class="form-control" placeholder="Enter discount" #discount>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Rating</label>
+                                <input type="number" class="form-control" placeholder="Enter rating" #rating>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Color</label>
+                                <input type="text" class="form-control" placeholder="Enter color" #color>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Size</label>
+                                <input type="text" class="form-control" placeholder="Enter size" #size>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Stock</label>
+                                <input type="number" class="form-control" placeholder="Enter stock" #stock>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Warranty</label>
+                                <input type="text" class="form-control" placeholder="Enter warranty" #warranty>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Image URL</label>
+                                <input type="text" class="form-control" placeholder="Enter image URL" #imageUrl>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter description"
+                                    #description></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Is Available</label>
+                                <select class="form-control" #isAvailable>
+                                    <option value="">Select Availability</option>
+                                    <option value="Available">Yes</option>
+                                    <option value="Out of Stock">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Is Featured</label>
+                                <select class="form-control" #isFeatured>
+                                    <option value="">Select Featured</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-success btn-block" *ngIf="!isOnEditMode" (click)="onAddProduct()">Add
+                                Product</button>
+                            <button class="btn btn-info btn-block" *ngIf="isOnEditMode"
+                                (click)="onUpdateProduct()">Update
+                                Product</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="productArr.length>0;else noProduct">
+                <div class="col-lg-3 mb-4" *ngFor="let product of productArr ; trackBy:trackById">
+                    <mat-card class="example-card h-100 shadow">
+                        <mat-card-header>
+                            <mat-card-title>
+                                {{product.productName}}
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                {{product.brand}} | {{product.category}}
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image [src]="product.imageUrl" [alt]="product.productName">
+                        <mat-card-content>
+                            <p><strong>Product ID:</strong> {{product.id}}</p>
+                            <p><strong>Price:</strong> ₹{{product.price}}</p>
+                            <p><strong>Discount:</strong> {{product.discount}}%</p>
+
+                            <p><strong>Rating: </strong><span class="badge rating" [ngClass]="{
+                        'bg-success':product.rating>4,
+                        'bg-warning':product.rating>=3 && product.rating<=4,
+                        'bg-danger':product.rating<=2
+                    }"> {{product.rating}}</span></p>
+                            <p><strong>Color:</strong> {{product.color}}</p>
+                            <p><strong>Size:</strong> {{product.size}}</p>
+                            <p><strong>Stock:</strong> {{product.stock}}</p>
+                            <p><strong>Warranty:</strong> {{product.warranty}}</p>
+                            <p>{{product.description}}</p>
+                            <p>
+                                <strong>Availability:</strong>
+                                <span [ngClass]="product.isAvailable ? 'text-success' : 'text-danger'">
+                                    {{product.isAvailable ? 'Available' : 'Out of Stock'}}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>Featured:</strong>
+                                <span *ngIf="product.isFeatured" class="badge badge-success">Featured
+                                    Product </span>
+
+                                <span *ngIf="!product.isFeatured" class="badge badge-secondary">Regular Product</span>
+                            </p>
+                        </mat-card-content>
+                        <mat-card-actions class="d-flex justify-content-between">
+                            <button mat-raised-button color="primary" (click)="onEdit(product)">
+                                <mat-icon>edit</mat-icon>
+                                Edit</button>
+                            <button mat-raised-button color="warn" (click)="onremove(product)"
+                                [disabled]="editId === product.id"><mat-icon>delete</mat-icon>Delete</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+
+            <ng-template #noProduct>
+                <p class="alert alert-success">No Product Found</p>
+            </ng-template>
+        </div> when i click image the below content should hover the content will not show until i hiver
+    </div>
+
+    <ng-template #noProduct>
+        <p class="alert alert-success">No Product Found</p>
+    </ng-template>
+</div>

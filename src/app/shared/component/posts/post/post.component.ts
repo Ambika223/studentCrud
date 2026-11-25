@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IPost } from 'src/app/shared/model/postinterface';
 import { UuidService } from 'src/app/shared/service/uuid.service';
+import { SnackBarService } from 'src/app/shared/service/snack-bar.service';
 
 @Component({
   selector: 'app-post',
@@ -9,7 +10,9 @@ import { UuidService } from 'src/app/shared/service/uuid.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private _uuidService: UuidService) { }
+  constructor(private _uuidService: UuidService,
+    private _SnackBarService: SnackBarService
+  ) { }
   @ViewChild('title') todoTitle!: ElementRef<HTMLInputElement>;
   @ViewChild('image') todoImage!: ElementRef<HTMLInputElement>;
   @ViewChild('description') todoDescription!: ElementRef<HTMLTextAreaElement>;
