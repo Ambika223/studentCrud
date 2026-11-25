@@ -24,6 +24,7 @@ export class MovieComponent implements OnInit {
 
 
 
+
   constructor(private _uuidService: UuidService,
     private _SnackBarService: SnackBarService
   ) { }
@@ -106,6 +107,8 @@ export class MovieComponent implements OnInit {
       id: this._uuidService.getUUID()
     }
     this.movieArr.push(movieObj);
+    this._SnackBarService.openSnackBar(`The todo with ${movieObj.id} is Added Successfully`)
+
     this.formreset();
   }
 
@@ -136,6 +139,8 @@ export class MovieComponent implements OnInit {
       this.movieArr[getIndex] = movieObj;
       this.isOnEditMode = false;
       this.editId = '';
+      this._SnackBarService.openSnackBar(`The todo with ${movieObj.id} is updated Successfully`)
+
       this.formreset();
     }
   }
@@ -148,6 +153,7 @@ export class MovieComponent implements OnInit {
       let removeIndex = this.movieArr.findIndex(m => m.id === mov.id);
       if (removeIndex > -1) {
         this.movieArr.splice(removeIndex, 1);
+        this._SnackBarService.openSnackBar(`The todo with ${mov.id} is removed Successfully`)
 
       }
     }
