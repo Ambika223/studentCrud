@@ -80,7 +80,7 @@
                     <button mat-mini-fab color="primary" (click)="onEditMovie(movie)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-mini-fab color="warn" (click)="onRemoveMovie(movie)">
+                    <button mat-mini-fab color="warn" (click)="onRemoveMovie(movie)" [disabled]="editId === movie.id">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </mat-card-actions>
