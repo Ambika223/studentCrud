@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoComponent } from './shared/component/todo/todo/todo.component';
 import { PostComponent } from './shared/component/posts/post/post.component';
 import { ProductComponent } from './shared/component/product/product/product.component';
+import { MovieComponent } from './shared/component/movie/movie/movie.component';
+
+
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { ProductComponent } from './shared/component/product/product/product.com
     TodoComponent,
     PostComponent,
     ProductComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,8 @@ import { ProductComponent } from './shared/component/product/product/product.com
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    MovieComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

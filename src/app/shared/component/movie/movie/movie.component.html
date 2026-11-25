@@ -1,0 +1,95 @@
+<div class="container-fluid mt-5 bg-dark">
+    <h2 class="text-center text-white">Movie Task</h2>
+
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3>{{isOnEditMode?"Update Movie":"Add Movie"}}</h3>
+                    <div class="form-group">
+                        <label for="">Movie Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Movie Name" #movieName>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Movie Image</label>
+                        <input type="text" class="form-control" placeholder="Enter Movie Image" #image>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Movie Content</label>
+                        <input type="text" class="form-control" placeholder="Enter Movie Content" #content>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Movie Genre</label>
+                        <select #genre class="form-control">
+                            <option value="">Select Movie Genre</option>
+                            <option value="Comedy, Drama">Comedy, Drama</option>
+                            <option value="Sports, Drama">Sports, Drama</option>
+                            <option value="Action, Fantasy">Action, Fantasy</option>
+                            <option value="Thriller, Crime">Thriller, Crime</option>
+                            <option value="Action, Drama">Action, Drama</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Movie Rating</label>
+                        <input type="number" class="form-control" placeholder="Enter Movie Rating" #rating>
+                    </div>
+
+
+                    <button *ngIf="!isOnEditMode" mat-raised-button color="primary" class="btn-block"
+                        (click)="onAddMovie()">Add Movie</button>
+                    <button mat-raised-button color="success" class="btn-block" *ngIf="isOnEditMode"
+                        (click)="onUpdateMovie()">Update
+                        Movie</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row movie-list" *ngIf="movieArr.length>0;else noMovies">
+
+        <div class="col-md-3 col-sm-3 mt-4" *ngFor="let movie of movieArr;trackBy:trackById">
+            <mat-card class="movieCard h-100">
+                <div class="movie-header">
+
+                    <h2 class="headTitle">{{movie.movieName}}</h2>
+                    <span class="badge p-2" [ngClass]="{
+                            'badge-success':movie.rating>=8,
+                            'badge-warning':movie.rating>=6 && movie.rating<8,
+                            'badge-danger':movie.rating<6
+                        }">{{movie.rating}}</span>
+
+                </div>
+
+                <figure>
+                    <img [src]="movie.image" [alt]="movie.movieName" [title]="movie.movieName">
+                    <figcaption>
+                        <p>
+                            {{movie.content}}
+                        </p>
+                        <strong>Genre:</strong>
+                        <p>{{movie.genre}}</p>
+                    </figcaption>
+                </figure>
+
+                <mat-card-actions class="d-flex justify-content-between">
+                    <button mat-mini-fab color="primary" (click)="onEditMovie(movie)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="warn" (click)="onRemoveMovie(movie)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+    </div>
+
+    <ng-template #noMovies>
+        <p class="text text-info">No Movie Found</p>
+    </ng-template>
+</div>
