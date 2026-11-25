@@ -335,6 +335,8 @@ export class ProductComponent implements OnInit {
       id: this._uuidService.getUUID()
     }
     this.productArr.push(productobj);
+    this._SnackBarService.openSnackBar(`The todo with ${productobj.id} is added Successfully`)
+
     this.resetForm();
   }
 
@@ -383,6 +385,8 @@ export class ProductComponent implements OnInit {
       this.productArr[updateIndex] = updateObj;
       this.isOnEditMode = false;
       this.editId = '';
+      this._SnackBarService.openSnackBar(`The todo with ${updateObj.id} is updated Successfully`)
+
       this.resetForm();
     }
   }
@@ -393,6 +397,8 @@ export class ProductComponent implements OnInit {
     if (getConfirm) {
       let removeIndex = this.productArr.findIndex(p => prd.id === prd.id);
       this.productArr.splice(removeIndex, 1);
+      this._SnackBarService.openSnackBar(`The todo with ${prd.id} is removed Successfully`)
+
     }
   }
 
